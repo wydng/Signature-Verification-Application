@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block title %}Load data{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+<h2>Nhận diện chữ ký:</h2>
+    <form method="post" enctype="multipart/form-data" action="{% url 'xuly_anh' %}">
+        {% csrf_token %}
+        <label for="image">Chọn hình ảnh:</label>
+        <input type="file" name="image" id="imageInput" accept="image/*" required>
+        <img id="selectedImage" src="#" alt="Selected Image" style="display:none; max-width: 70%; height: auto;">
+        <button type="submit">Nhận diện chữ ký</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Xử lý khi người dùng chọn hình ảnh
+            $("#imageInput").change(function() {
+                readURL(this);
+            });
+
+            // Hàm đọc URL và hiển thị hình ảnh
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $("#selectedImage").attr("src", e.target.result);
+                        $("#selectedImage").css("display", "block");
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>Dự đoán chữ ký {% block title %}    {% endblock title %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+    /* Tùy chỉnh style cho hình ảnh chính */
+    .main-image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Tùy chỉnh style cho ảnh phụ và đoạn văn bản tương ứng */
+    .sub-image {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px; /* Khoảng cách giữa ảnh và đoạn văn bản */
+    }
+  </style>
+</head>
+<body class="min-vh-100">
+
+<div class="p-5 bg-success text-white text-center">
+  <h1>Ứng dụng Xác minh Chữ ký Ngân hàng</h1>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">Trang chính</a>
+      </li>
+      <li></li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/loaddata">Nhận diện chữ ký</a>
+      </li>
+      <li></li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/testdata">Dự đoán chữ ký đã nhận diện</a>
+      </li>
+      <li></li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/test">Dự đoán chữ ký có sẵn</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% block body %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 text-center">
+      <div class="">
+        <!-- Hình ảnh chính -->
+        
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- Cặp ảnh và đoạn văn bản thứ 1 -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Hình ảnh phụ 1 -->
+          <img src="{% static 'images/img1.png' %}" alt="Sub Image 1" class="sub-image">
+        </div>
+        <div class="col-md-6">
+          <!-- Đoạn văn bản tương ứng với ảnh phụ 1 -->
+          <p>Ứng dụng Xác minh Chữ ký Ngân hàng là một công cụ đáng tin cậy và tiện lợi cho việc xác minh tính hợp lệ của chữ ký trên các tài liệu ngân hàng. Với sự phát triển không ngừng của công nghệ số, việc đảm bảo tính toàn vẹn và tin cậy của thông tin ngân hàng là vô cùng quan trọng.</p>
+        </div>
+      </div>
+
+      <!-- Cặp ảnh và đoạn văn bản thứ 2 -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Hình ảnh phụ 2 -->
+          <img src="{% static 'images/img3.png' %}" alt="Sub Image 2" class="sub-image">
+        </div>
+        <div class="col-md-6">
+          <!-- Đoạn văn bản tương ứng với ảnh phụ 2 -->
+          <p>Với ứng dụng này, bạn không cần phải mất thời gian và công sức để thủ công kiểm tra chữ ký trên từng tài liệu một. Thay vào đó, chỉ cần một vài thao tác đơn giản thì bạn có thể nhanh chóng xác minh tính hợp lệ của chữ ký trên bất kỳ tài liệu ngân hàng nào.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <!-- Cặp ảnh và đoạn văn bản thứ 3 -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Hình ảnh phụ 3 -->
+          <img src="{% static 'images/avt.jpg' %}" alt="Sub Image 3" class="sub-image">
+        </div>
+        <div class="col-md-6">
+          <!-- Đoạn văn bản tương ứng với ảnh phụ 3 -->
+          <p>Giao diện đơn giản và trực quan của ứng dụng giúp bạn dễ dàng tải lên tài liệu chứa chữ ký và nhận kết quả xác minh ngay lập tức. Bạn sẽ biết ngay liệu chữ ký đó có được xác minh bởi ngân hàng hay không, giúp bạn đảm bảo tính toàn vẹn và tin cậy của tài liệu ngân hàng một cách dễ dàng và hiệu quả.</p>
+        </div>
+      </div>
+
+      <!-- Cặp ảnh và đoạn văn bản thứ 4 -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Hình ảnh phụ 4 -->
+          <img src="{% static 'images/img6.png' %}" alt="Sub Image 4" class="sub-image">
+        </div>
+        <div class="col-md-6">
+          <!-- Đoạn văn bản tương ứng với ảnh phụ 4 -->
+          <p>Ứng dụng sử dụng công nghệ tiên tiến như mô hình CNN và XGBoost để đảm bảo tính chính xác và đáng tin cậy trong quá trình xác minh chữ ký. Mô hình CNN được huấn luyện trên một tập dữ liệu lớn, bao gồm cả chữ ký hợp lệ và không hợp lệ, để đảm bảo khả năng phân loại chính xác. Đồng thời, tính năng bảo mật mạnh mẽ của ứng dụng đảm bảo rằng dữ liệu người dùng được mã hóa và bảo vệ một cách an toàn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <!-- Các đoạn văn bản khác ở phía dưới -->
+      <p>Nếu bạn thường xuyên làm việc với các tài liệu ngân hàng, ứng dụng Xác minh Chữ ký Ngân hàng sẽ trở thành một công cụ hữu ích để đảm bảo tính toàn vẹn và tin cậy của thông tin ngân hàng của bạn. Hãy tải ứng dụng Xác minh Chữ ký Ngân hàng ngay hôm nay và trải nghiệm sự tiện lợi và an toàn mà nó mang lại!</p>
+      
+    </div>
+  </div>
+</div>
+{% endblock body %}
+</body>
+</html>

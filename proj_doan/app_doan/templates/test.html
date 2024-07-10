@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+
+
+{% block body %}
+
+<div class="container mt-5">
+<h1>Kết quả dự đoán chữ ký:</h1>
+    <form method="post" action="{% url 'Du_doan_chu_ky' %}" enctype="multipart/form-data" id="signatureForm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="image">Chọn hình ảnh:</label>
+            <input type="file" class="form-control-file" name="image" id="imageInput" accept=".png, .jpg, .jpeg">
+            <img id="selectedImage" src="#" alt="Selected Image" style="display:none; max-width: 70%; height: auto;">
+        </div>
+        <button type="submit">Dự đoán</button>
+        
+    </form>
+
+    
+        <div class="mt-3">
+            <p>Kết quả: </p>
+             {% if accuracy %}
+                 {% if result %}
+                    <p> Chữ ký được xác minh là {{ result }} với độ chính xác: {{ accuracy }} %</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Xử lý khi người dùng chọn hình ảnh
+        $("#imageInput").change(function() {
+            readURL(this);
+        });
+
+        // Hàm đọc URL và hiển thị hình ảnh
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $("#selectedImage").attr("src", e.target.result);
+                    $("#selectedImage").css("display", "block");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    });
+</script>
+{% endblock %}
